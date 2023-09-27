@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Profile : Samachar Times {% endblock%}
+{% block child %}
+<div class="row mt-3 pb-4 mx-2">
+    <div class="text-center">
+        <h2 class="text-center sectionTitle"><span class="text-ocolor">My</span> Profile <i class="fa-solid fa-address-card"></i></h2>
+        <p class="text-center TNR" style="font-size: 17px;"> This is the profile page of our user.</p>
+    </div>
+    <!-- This is data of user -->
+    {% for x in prodata %}
+    <div class="col-sm-3 "></div>
+    <div class="col-sm-2 bs sst mt-4 py-2">
+        <center><img src="/{{x.image}}" class="img-fluid rounded" style="max-height:300px;" alt="..." /></center>
+    </div>
+    <div class="col-sm-4 bs mt-4  sst">
+        <div class="row">
+            <div class="col-sm-12 TNR ms-1 mt-2"><b class="fs-3 text-center">{{x.name}}</b></div>
+            <div class="col-sm-12 TNR  ms-1 mt-3 fs-5"><i class="fa-solid fa-phone alt text-danger"></i><b
+                    class="text-ocolor"> Mobile : </b>{{x.number}}</div>
+            <div class="col-sm-12  TNR ms-1 mt-3 fs-5"><i class="fa-solid fa-envelope text-danger"></i><b
+                    class="text-ocolor"> Email : </b>{{x.email}}</div>
+            <div class="col-sm-12 TNR  ms-1 mt-3 fs-5"><i class="fa-solid fa-key text-danger"></i><b class="text-ocolor">
+                    Password : </b>{{x.password}}</div>
+            <div class="col-sm-12  TNR ms-1 mt-3 mb-2 fs-5"><i class="fa-solid fa-house-chimney text-danger"></i><b
+                    class="text-ocolor"> Address : </b>{{x.address}}</div>
+            <div class="col-sm-6 my-2 ">
+                <input type="button" value="Edit Profile" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample" class="btn btn-danger w-100 px-4">
+            </div>
+            <div class="col-sm-6 my-2">
+                <a href="/logout/"><input type="button" value="Log Out" class="btn btn-danger w-100"></a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3"></div>
+    {% endfor %}
+</div>
+
+<center>
+<div class="collapse collapse-vertical my-3" id="collapseWidthExample">
+    <div class="card card-body bs" style="width: 330px; background: #e0e4f0;">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="input-group bs">
+                        <i class="input-group-text"><i class="fa-solid fa-user text-danger"></i></i>
+                        <input type="text" class="form-control" name="name" placeholder="Enter Your Name*"
+                            required>
+                    </div>
+                </div>
+                <div class="col-sm-12 mt-4">
+                    <div class="input-group bs">
+                        <i class="input-group-text"><i class="fa-solid fa-image text-danger"></i></i>
+                        <input type="file" class="form-control" name="image" required>
+                    </div>
+                </div>
+                <div class="col-sm-12 mt-4">
+                    <div class="input-group bs">
+                        <i class="input-group-text"><i class="fa-solid fa-phone text-danger"></i></i>
+                        <input type="number" name="number" class="form-control" placeholder="Enter Your Number*" required>
+                    </div>
+                </div>
+                <div class="col-sm-12 mt-4">
+                    <div class="input-group bs">
+                        <i class="input-group-text"><i class="fa-solid fa-lock text-danger"></i></i>
+                        <input type="password" name="password" class="form-control" placeholder="Enter Your Password*" required>
+                    </div>
+                </div>
+                <div class="col-sm-12 mt-4">
+                    <div class="input-group bs">
+                        <i class="input-group-text"><i class="fa-solid fa-home text-danger"></i></i>
+                        <textarea name="address" class="form-control" id="" cols="30" rows="3" placeholder="Enter Your Address*" required></textarea>
+                    </div>
+                </div>
+                <div class="col-sm-12 mt-4">
+                    <input type="submit" class="btn btn-danger w-100"  value="SAVE ">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</center>
+{% endblock %}

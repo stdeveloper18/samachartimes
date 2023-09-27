@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Show News : Samachar Times{% endblock%}
+{% block child %}
+<div class="row mx-2 mt-3">
+    <div class="col-sm-12">
+        <div class="row">
+            {% for title in title %}
+            <h2 class="mt-4 ms-3" style="border-left: 4px solid #c80000;"><span class="text-ocolor">{{title.name}}</span> News <i
+                class="fa-solid fa-newspaper"></i></h2>
+                <p class="TNR" style="font-size:17px;">Here are some News of {{title.name}} which you are selected.</p>
+                {% endfor %}
+                
+            {% for snews in snews %}
+            <div class="col col-lg-3 col-md-4 px- py-5">
+                <div class="row">
+                    <div class="col-sm-12 text-center">
+                        <img src="/{{snews.newsimage}}" class="img-fluid rounded" style="height: 200px; min-width: 180px;" alt="...">
+                        <a href="/detailnews?news={{snews.id}}" class="TNR text-dark">
+                            <p class="slid mt-2" style="text-align: justify;">{{snews.newstitle}}</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

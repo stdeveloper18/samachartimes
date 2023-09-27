@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Feedback : Samachar Times{% endblock%}
+{% block child %}
+<div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10">
+        <div class="row mb-5 mx-3 mt-3">
+            <h2 class="text-center sectionTitle"><span class="text-ocolor">Valuable</span> Feedback <i
+                    class="fa-solid fa-comments"></i></h2>
+            <p class="text-center TNR" style="font-size:17px;">We appriciate to Your Valuable Feedback and we are always
+                focused on it. </p>
+            <div class="col-sm-5 bg-light rounded pb-4 px-4 pt-4">
+                <img src="{% static 'images/feedback.jpg' %}" class="rounded img-fluid" height="400px" />
+            </div>
+            <div class="col-sm-7 bg-light rounded px-3 pt-4">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="row mt-2">
+                        <h4 class="text-ocolor">Add Your Feedback *</h4>
+                        <div class="col-sm-6 pt-4">
+                            <label class="TNR fs-5">Your Happy Name : </label>
+                            <div class="input-group">
+                                <i class="input-group-text"><i class="fa-solid fa-user"></i></i>
+                                <input type="text" name="name" class="form-control " required />
+                            </div>
+                        </div>
+                        <div class="col-sm-6 pt-4">
+                            <label class="TNR fs-5">Your Beautiful Image : </label>
+                            <div class="input-group">
+                                <i class="input-group-text"><i class="fa-solid fa-image"></i></i>
+                                <input type="file" name="image" class="form-control" required />
+                            </div>
+                        </div>
+                        <div class="col-sm-12 pt-4">
+                            <label class="TNR fs-5">Your Valid Email : </label>
+                            <div class="input-group">
+                                <i class="input-group-text"><i class="fa-solid fa-envelope"></i></i>
+                                <input type="email" name="email" class="form-control" required />
+                            </div>
+                        </div>
+                        <div class="col-sm-12 pt-4">
+                            <label class="TNR fs-5">Your Useful Feedback : </label>
+                            <div class="input-group">
+                                <i class="input-group-text"><i class="fa-solid fa-comments"></i></i>
+                                <textarea class="form-control" name="feedback" rows="3" required></textarea>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 mt-4">
+                            <input type="submit" class="btn btn-outline-danger px-4" value="SEND FEEDBACK" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-1"></div>
+</div>
+
+<div class="row mx-2">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10 bg-light rounded px-4 py-4 ">
+        <h2 class="text-center sectionTitle"><span class="text-ocolor">Our </span>Feedbacks <i class="fa-solid fa-user-group"></i>
+        </h2>
+        <p class="TNR text-center" style="font-size: 17px;">These are feedbacks which is given by our users. These are
+            very helpful for us and our team.</p>
+        <div class="table-responsive-sm">
+            <table class="table table-striped mt-4">
+                <tr>
+                    <th class="text-danger">Image</th>
+                    <th class="text-danger">Name</th>
+                    <th class="text-danger">Email</th>
+                    <th class="text-danger">Feedback</th>
+                </tr>
+                {% for i in feed %}
+                <tr>
+                    <td><img src="/{{i.image}}" class="img-fluid rounded" style="max-height:100px;" /></td>
+                    <td class="TNR" style="font-size: 18px;">{{i.name}}</td>
+                    <td class="TNR" style="font-size: 18px;">{{i.email}}</td>
+                    <td class="TNR" style="font-size: 18px;">{{i.feedback}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+    <div class="col-sm-1"></div>
+</div>
+{% endblock %}

@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Profile : Samachar Times {% endblock%}
+{% block child %}
+<div class="row mt-3 pb-4 mx-2">
+    <h2 class="text-center sectionTitle"><span class="text-ocolor">My</span> Profile <i
+            class="fa-solid fa-address-card"></i></h2><br>
+    <!-- This is data of user -->
+    {% for x in prodata2 %}
+    <div class="col-sm-3 "></div>
+    <div class="col-sm-2 bs sst mt-4 py-2">
+        <center><img src="/{{x.image}}" class="img-fluid rounded" style="max-height:300px;" alt="..." /></center>
+    </div>
+    <div class="col-sm-4 bs mt-4  sst">
+        <div class="row">
+            <div class="col-sm-12 ms-1 mt-2"><b class="fs-3 text-center TNR">{{x.name}}</b></div>
+            <div class="col-sm-12 TNR ms-1 mt-3 fs-5"><i class="fa-solid fa-phone alt text-danger"></i><b
+                    class="text-ocolor TNR"> Mobile : </b>{{x.number}}</div>
+            <div class="col-sm-12 TNR ms-1 mt-3 fs-5"><i class="fa-solid fa-envelope text-danger"></i><b
+                    class="text-ocolor TNR"> Email : </b>{{x.email}}</div>
+            <div class="col-sm-12 TNR ms-1 mt-3 fs-5"><i class="fa-solid fa-key text-danger"></i><b class="text-ocolor">
+                    Password : </b>{{x.password}}</div>
+            <div class="col-sm-12 TNR ms-1 mt-3 mb-2 fs-5"><i class="fa-solid fa-house-chimney text-danger"></i><b
+                    class="text-ocolor"> Address : </b>{{x.address}}</div>
+            <div class="col-sm-6 my-2">
+                <input type="button" value="Add New News" class="btn btn-danger w-100" data-bs-toggle="collapse"
+                    data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
+            </div>
+            <div class="col-sm-6 my-2 "><a href="/logout/"><input type="button" value="Log Out"
+                        class="btn btn-danger w-100 px-4"></a></div>
+        </div>
+    </div>
+    <div class="col-sm-3"></div>
+    {% endfor %}
+</div>
+
+<!-- FORM FOR ADDING NEW NEWS -->
+<div class="row">
+    <center>
+        <div style="min-height: 20;">
+            <div class="collapse collapse-vertical" id="collapseWidthExample">
+                <div class="card card-body" style="width: 330px; background: #e0e4f0;">
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <select class="form-control" name="newsreport" id="newsreport">
+                                    <option value="Sweta Singh">Sweta Singh</option>
+                                    <option value="Sudhir Chaudhary">Sudhir Chaudhary</option>
+                                    <option value="Chrita tripathi">Chrita tripathi</option>
+                                    <option value="Arnab Goswami">Arnab Goswami</option>
+                                    <option value="Anjana Om Kasyap">Anjana Om Kasyap</option>
+                                  </select>
+                            </div>
+                            <div class="col-sm-12 mt-4">
+                                <select class="form-control" name="newscate" id="newscate">
+                                    <option value="Country">Country</option>
+                                    <option value="Cricket">Cricket</option>
+                                    <option value="Healthcare">Healthcare</option>
+                                    <option value="PM Modi">PM Modi</option>
+                                    <option value="Device">Device</option>
+                                    <option value="Religions">Religions</option>
+                                    <option value="Science">Science</option>
+                                  </select>
+                            </div>
+                            <div class="col-sm-12 mt-4">
+                                <input type="file" name="image" class="form-control" required>
+                            </div>
+                            <div class="col-sm-12 mt-4">
+                                <textarea name="newstitle" class="form-control" placeholder="Enter News Title*"
+                                    cols="10" rows="3" required></textarea>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 mt-4">
+                            <textarea name="newsdec" placeholder="Enter News Descripition*" class="form-control"
+                                cols="10" rows="6" required></textarea>
+                        </div>
+                        <div class="col-sm-12 mt-4">
+                            <input type="submit" class="btn-outline-danger btn w-100" value="Add News">
+                        </div>
+                </div>
+                </form>
+            </div>
+        </div>
+    </center>
+</div>
+<!-- FORM FOR ADDING NEW NEWS END -->
+
+<!-- news show -->
+<div class="row mt-5">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10">
+        <h2 class="text-center sectionTitle"><span class="text-ocolor">Your Atteched</span> News <i
+                class="fa-solid fa-newspaper"></i></h2>
+                <p class="text-center TNR" style="font-size: 17px;"> Here are all news which You Atteched with Samachar Times</p>
+        <div class="row my-3 mx-3">
+            {% for snews in d %}
+            <div class="col col-lg-6 my-2 px-3">
+                <div class="card mb-3" style="max-width: 540px; border: none;">
+                    <div class="row g-0">
+                        <div class="col-md-4 mt-3">
+                            <img src="/{{snews.newsimage}}" class="img-fluid rounded" style="min-height: 200px;"
+                                alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <span class="card-text text-ocolor"
+                                    style="font-size:18px; ">{{snews.newscategory}}</span>
+                                <span class="float-end"><i class="fa-solid fa-calendar-days"></i> :
+                                    {{snews.newsdate}}</span>
+                                <p class="card-text TNR mt-2" style="text-align: justify;">{{snews.newstitle}}</p>
+                                <a href="/detailnews?news={{snews.id}}" class="btn btn-outline-danger"><i
+                                        class="fa-solid fa-eye"></i> View News</a>
+                                <a href="/profile?del={{snews.id}}" class="float-end btn btn-danger"><i class="fa-solid fa-trash"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="col-sm-1"></div>
+</div>
+<!-- News Show End -->
+
+{% endblock %}

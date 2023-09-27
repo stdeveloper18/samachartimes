@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Blogs : Samachar Times{% endblock%}
+{% block child %}
+<div class="row">
+    <div class="col-sm-12 text-center">
+        <h2 class="mt-3 sectionTitle"><span class="text-ocolor">Blogs</span>
+            <i class="fa-solid fa-blog"></i></h2>
+        <p class="TNR" style="font-size:17px;">Here are some blogs which are created by our user To show some extra
+            things That we are missed.</p>
+            <button class="btn btn-outline-danger mb-3" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
+                    Create New Blog
+                </button>
+                <center>
+                    <div>
+                        <div class="collapse collapse-vertical" id="collapseWidthExample">
+                            <div class="card card-body bs" style="width: 330px; background: #e0e4f0; border: 1px solid black;">
+                                <form method="post" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="input-group bs">
+                                                <i class="input-group-text"><i class="fa-solid fa-user text-danger"></i></i>
+                                                <input type="text" class="form-control" name="name"
+                                                    placeholder="Enter Your Name" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 mt-4">
+                                            <div class="input-group bs">
+                                                <i class="input-group-text"><i class="fa-solid fa-envelope text-danger"></i></i>
+                                                <input type="email" class="form-control" name="email"
+                                                    placeholder="Enter Your Email" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 mt-4">
+                                            <div class="input-group bs">
+                                                <i class="input-group-text"><i class="fa-solid fa-image text-danger"></i></i>
+                                                <input type="file" class="form-control" name="image" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 mt-4">
+                                            <div class="input-group bs">
+                                                <i class="input-group-text"><i class="fa-solid fa-comments text-danger"></i></i>
+                                                <textarea placeholder="Write Your Blog" name="data" class="form-control" id=""
+                                                    cols="30" rows="5"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 mt-4">
+                                            <input type="submit" class="btn-outline-danger bs btn w-100" value="Create Blog">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </center>
+    </div>
+</div>
+
+<!-- Show Blog -->
+<div class="row my-5 mx-3">
+    {% for data in blogdata %}
+    <div class="col-lg-3 col-md-6 my-2 px-3">
+        <div class="card">
+            <img src="/{{data.Image}}" class="card-img-top rounded img-fluid" style="max-height:225px;"
+                alt="Some Images">
+            <div class="card-body">
+                <p style="font-size:17px; text-align: justify;" class="TNR card-title">{{data.Data}}
+                    <br><br><span class="text-ocolor">Written By :</span> {{data.Name}}<br>
+                    <span class="text-ocolor"><i class="fa-solid fa-calendar-days"></i> :</span> {{data.Date}}
+                </p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<!-- Show Blog End -->
+{% endblock %}

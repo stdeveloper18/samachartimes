@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Detail News : Samachar Times{% endblock%}
+{% block child %}
+<div class="row my-5 mx-3">
+    <div class="col-sm-2"></div>
+    {% for snews in snews %}
+    <div class="col-sm-8 px-3">
+        <div class="row">
+            <div class="col col-lg-5">
+                <img src="/{{snews.newsimage}}" class="img-fluid rounded" width="600px" alt="News Image">
+            </div>
+            <div class="col col-lg-7 py-2">
+                <p class="card-text TNR fs-4" style="text-align: justify;font-size:18px; color:#0700c8;">{{snews.newstitle}}</p>
+            </div>
+            <!-- <div class="col-sm-5"></div>
+            <div class="col-sm-7">
+                <button class="btn btn-danger"><i class="fa-brands fa-facebook px-4 py-2 fs-4"></i></button>
+            </div> -->
+            <div class="col-sm-12 py-3">
+                <p class="card-text TNR" style="text-align: justify; font-size:17px;">{{snews.newsdec}}</p>
+                <b class=""><i class="fa-solid fa-calendar-days text-danger"></i> : {{snews.newsdate}}</b>
+                <b class="float-end"><span class="text-ocolor">Reported By : </span>{{snews.newsreporter}}</b>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    <div class="col-sm-2"></div>
+</div>
+{% endblock %}

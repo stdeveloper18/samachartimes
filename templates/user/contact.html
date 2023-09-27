@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block title %} Contact Us : Samachar Times {% endblock%}
+{% block child %}
+<!-- Contact Us Form  -->
+<div class="row mt-2 mb-4">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+        <form method="post">
+            {% csrf_token %}
+            <div class="row mx-4 mt-3">
+                <h2 class="text-center sectionTitle"><span class="text-ocolor">Contact</span> With Us <i
+                        class="fa-solid fa-message"></i></h2>
+                <p class="text-center TNR" style="font-size:17px;">Any time you need Professional Support or have any
+                    Question, You can contact<br> with us by filling this form</p>
+                <div class="col-sm-6 mt-4">
+                    <label class="fs-5 text-ocolor">Your Name : </label>
+                    <div class="input-group" style="border-radius:100px;">
+                        <i class="input-group-text bs" style="border-radius:100px;"><i class="fa-solid fa-user"></i></i>
+                        <input type="text" name="name" class="bs form-control" style="border-radius:100px;" required />
+                    </div>
+                </div>
+                <div class="col-sm-6 mt-4">
+                    <label class="fs-5 text-ocolor">Your Contact : </label>
+                    <div class="input-group" style="border-radius:100px;">
+                        <i class="input-group-text bs" style="border-radius:100px;"><i class="fas fa-phone alt"></i></i>
+                        <input type="number" name="number" class="bs form-control" style="border-radius:100px;"
+                            required />
+                    </div>
+                </div>
+                <div class="col-sm-12 mt-4">
+                    <label class="fs-5 text-ocolor">Your Email : </label>
+                    <div class="input-group" style="border-radius:100px;">
+                        <i class="input-group-text bs" style="border-radius:100px;"><i
+                                class="fa-solid fa-envelope"></i></i>
+                        <input type="email" name="email" style="border-radius:100px;" class="bs form-control"
+                            required />
+                    </div>
+                </div>
+                <div class="col-sm-12 mt-4">
+                    <label class="fs-5 text-ocolor">Your Message : </label>
+                    <textarea class="form-control bs" style="border-radius:100px;" rows="4" name="message"></textarea>
+                </div>
+                <div class="col-sm-12 mt-4 mb-4">
+                    <input type="submit" class="btn btn-outline-danger px-4" style="border-radius:100px;"
+                        value="SEND MESSAGE" />
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-sm-2"></div>
+</div>
+<!-- Contact Form Finish -->
+{% endblock %}

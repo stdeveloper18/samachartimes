@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Register : Samachar Times {% endblock%}
+{% block child %}
+<div class="row" style="background: #75e2e9;">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10">
+        <div class="row my-5 mx-3">
+            <div class="col-sm-6" style="background: #3686bd;">
+                <h2 class="text-ocolor p-5 TNR">Information</h2>
+                <p class=" text-light px-5 pb-5" style="font-size: 17px; text-align: justify;">
+                    You are just one step behind to join Samachar Times. Here You can reed daily news . If You are the
+                    part of
+                    our family then we will give you our best.
+                    <br><br><br>
+                    News is information about current events. This may be provided through many different media: word of
+                    mouth, printing, postal systems, broadcasting, electronic communication, or through the testimony of
+                    observers and witnesses to events. News is sometimes called "hard news" to differentiate it from
+                    soft media.
+                </p>
+                <button class="btn btn-light TNR px-4 mb-5 mx-5" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                    data-bs-whatever="@getbootstrap">Have an Account</button>
+            </div>
+            <div class="col-sm-6 bg-light">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="row bg-light px-5 py-5">
+                        <h2 class=""><span class="text-ocolor">Register</span> Yourself <i
+                                class="fa-solid fa-user-plus"></i></h2>
+                        <div class="col-sm-6 pt-4">
+                            <label class="text-ocolor fs-5">Your Name : </label>
+                            <div class="input-group bs" style="border-radius:7px;">
+                                <i class="input-group-text"><i class="fa-solid fa-user"></i></i>
+                                <input type="text" name="name" class="form-control" autocomplete="off" required />
+                            </div>
+                        </div>
+                        <div class="col-sm-6 pt-4">
+                            <label class="text-ocolor fs-5">Your Contact : </label>
+                            <div class="input-group bs" style="border-radius:7px;">
+                                <i class="input-group-text"><i class="fa-solid fa-phone"></i></i>
+                                <input type="number" name="number" class="form-control" autocomplete="off" required />
+                            </div>
+                        </div>
+                        <div class="col-sm-6 pt-4">
+                            <label class="text-ocolor fs-5">Your Password : </label>
+                            <div class="input-group bs" style="border-radius:7px;">
+                                <i class="input-group-text"><i class="fa-solid fa-lock"></i></i>
+                                <input type="password" name="password" class="form-control" autocomplete="off"
+                                    required />
+                            </div>
+                        </div>
+                        <div class="col-sm-6 pt-4">
+                            <label class="text-ocolor fs-5">Your Image : </label>
+                            <div class="input-group bs" style="border-radius:7px;">
+                                <i class="input-group-text"><i class="fa-solid fa-image"></i></i>
+                                <input type="file" name="image" class="form-control" autocomplete="off" required />
+                            </div>
+                        </div>
+                        <div class="col-sm-12 pt-4">
+                            <label class="text-ocolor fs-5">Your Email : </label>
+                            <div class="input-group bs" style="border-radius:7px;">
+                                <i class="input-group-text"><i class="fa-solid fa-envelope"></i> </i>
+                                <input type="email" name="email" class="form-control" autocomplete="off" required />
+                            </div>
+                        </div>
+                        <div class="col-sm-12 pt-4">
+                            <label class="text-ocolor fs-5">Your Address : </label>
+                            <div class="input-group bs" style="border-radius:7px;">
+                                <i class="input-group-text"><i class="fa-solid fa-home"></i> </i>
+                                <textarea class="form-control" name="address" rows="3" autocomplete="off"
+                                    required></textarea>
+                            </div>
+                        </div>
+                        <center>
+                            <input type="submit" value="REGISTER" class="btn btn-danger mb-2 px-4 py-2 mt-5 w-100" />
+                        </center>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-1"></div>
+</div>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}View News : Samachar Times{% endblock%}
+{% block child %}
+<div class="row mt-3">
+    <h2 class="text-center sectionTitle"><span class="text-ocolor">All</span> news <i class="fa-solid fa-newspaper"></i>
+    </h2>
+    <p class="text-center TNR" style="font-size:17px;">Here are our all News by Category and Description.</p>
+    <!-- Category Section -->
+    <div class="col-sm-3 mt-3">
+        <button class="btn btn-danger d-lg-none" type="button" data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasResponsive" aria-controls="offcanvasResponsive">Category</button>
+        <div class="offcanvas-lg offcanvas-start" tabindex="-1" id="offcanvasResponsive"
+            aria-labelledby="offcanvasResponsiveLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasResponsiveLabel">Category</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
+                    data-bs-target="#offcanvasResponsive" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <div class="list-group w-100">
+                    {% for a in cat %}
+                    <a href="/viewnews?news={{a.id}}" class="list-group-item my-2 TNR"> <img src="/{{a.Npic}}"
+                            class="img-fluid rounded" style="max-height: 80px;"> <span
+                            class="fs-5 ps-3">{{a.name}}</span></a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Category Section End -->
+
+    <!-- News Swction -->
+    <div class="col-sm-9 mt-2">
+        <div class="row mx-3">
+            {% for snews in snews%}
+            <div class="col-sm-6 my-3 px-3">
+                <div class="card mb-3" style="max-width: 540px; border: none;">
+                    <div class="row g-0">
+                        <div class="col-md-4 mt-3">
+                            <img src="/{{snews.newsimage}}" class="img-fluid rounded" style="min-height: 200px;"
+                                alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <span class="card-text text-ocolor"
+                                    style="font-size:18px; ">{{snews.newscategory}}</span>
+                                <span class="float-end"><i class="fa-solid fa-calendar-days"></i> :
+                                    {{snews.newsdate}}</span>
+                                <p class="card-text TNR mt-2" style="text-align: justify;">{{snews.newstitle}}</p>
+                                <a href="/detailnews?news={{snews.id}}" class="btn btn-outline-danger"><i
+                                        class="fa-solid fa-eye"></i> View More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <!-- News Section End -->
+
+</div>
+{% endblock %}
