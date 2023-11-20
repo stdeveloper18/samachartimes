@@ -58,8 +58,8 @@
 </div>
 
 <!-- Latest News Section -->
-<div class="row mb-5">
-    <h2 class="text-ocolor mt-4 ms-3" style="border-left: 5px solid #c80000;">Latest News</h2>
+<div class="row mx-1 my-2">
+    <h2 class="text-ocolor mt-4" style="border-left: 5px solid #c80000;">Latest News</h2>
       {% for snews in latest %}
       <div class="col col-lg-3 col-md-4 px-2 mt-4">
         <a href="/detailnews?news={{snews.id}}" class="TNR text-dark">
@@ -69,15 +69,15 @@
             <p class="card-text slid TNR" style="text-align: justify;">{{snews.newstitle}}</p>
           </div>
          </div>
-          </a>
+        </a>
       </div>
       {% endfor %}
 </div>
 <!-- Latest News Section End -->
 
 <!-- PM Modi Section -->
-<div class="row mb-5">
-    <h2 class="text-ocolor mt-5 ms-3" style="border-left: 5px solid #c80000;">PM Narendra Modi</h2>
+<div class="row mx-1 my-2">
+    <h2 class="text-ocolor mt-5" style="border-left: 5px solid #c80000;">PM Narendra Modi</h2>
       {% for snews in pmmodi %}
       <div class="col col-lg-3 col-md-4 px-2 mt-4">
         <a href="/detailnews?news={{snews.id}}" class="TNR text-dark">
@@ -94,8 +94,8 @@
 <!-- PM Modi Section End -->
 
 <!-- Cricket Section -->
-<div class="row my-5">
-  <h2 class="text-ocolor mt-5 ms-3" style="border-left: 5px solid #c80000;">Cricket</h2>
+<div class="row mx-1 my-2">
+  <h2 class="text-ocolor mt-5" style="border-left: 5px solid #c80000;">Cricket</h2>
     {% for snews in cricket %}
     <div class="col col-lg-3 col-md-4 px-2 mt-4">
       <a href="/detailnews?news={{snews.id}}" class="TNR text-dark">
@@ -112,8 +112,8 @@
 <!-- Cricket Section End -->
 
 <!-- Mobile Section -->
-<div class="row mt-3 mb-5">
-  <h2 class="text-ocolor mt-5 ms-3" style="border-left: 5px solid #c80000;">Smart Device</h2>
+<div class="row mx-1 my-2">
+  <h2 class="text-ocolor mt-5" style="border-left: 5px solid #c80000;">Smart Device</h2>
     {% for snews in phone %}
     <div class="col col-lg-3 col-md-4 px-2 mt-4">
       <a href="/detailnews?news={{snews.id}}" class="TNR text-dark">
@@ -130,8 +130,8 @@
 <!-- Mobile Section End -->
 
 <!-- Science Section -->
-<div class="row my-3">
-  <h2 class="text-ocolor mt-5 ms-3" style="border-left: 5px solid #c80000;">Science</h2>
+<div class="row mx-1 my-2">
+  <h2 class="text-ocolor mt-5" style="border-left: 5px solid #c80000;">Science</h2>
     {% for snews in science %}
     <div class="col col-lg-3 col-md-4 px-2 mt-4">
       <a href="/detailnews?news={{snews.id}}" class="TNR text-dark">
